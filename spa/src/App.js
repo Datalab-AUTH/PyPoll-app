@@ -13,8 +13,8 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<HomePage />}>
-                        <Route index element={<LandPage />} />
-                        <Route path="/about" element={<AboutUs />} />
+                        {/*<Route index element={<LandPage />} />*/}
+                        {/*<Route path="/about" element={<AboutUs />} />*/}
                     </Route>
                     <Route path="/embed/:id" element={<Embed />} />
                 </Routes>

@@ -61,9 +61,8 @@ async def upload_graph(file: UploadFile, data: RawUploadModel = Depends(), user:
     for key in date:
         date[key] = datetime.strptime(date[key], "%Y-%m-%d")
     data = UploadModel(**{
-        "entities": ast.literal_eval(data.entities),
+        "users": ast.literal_eval(data.options)["users"],
         "date": date,
-        "title": data.title,
         "source": ast.literal_eval(data.source),
         "graph_properties": ast.literal_eval(data.graph_properties)
     })

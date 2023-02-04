@@ -3,17 +3,15 @@ from datetime import datetime
 
 
 class RawUploadModel(BaseModel):
-    entities: str
     date: str
-    title: str
     source: str
     graph_properties: str
+    options: str
 
 
 class UploadModel(BaseModel):
-    entities: list[dict[str, str | dict[str, float]]]
+    users: dict[str, dict[str, str | dict[str, int]]]
     date: dict[str, datetime]
-    title: str
     source: dict[str, float | str]
     graph_properties: dict[str, float | dict[str, float]]
 

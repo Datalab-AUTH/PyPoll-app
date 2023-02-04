@@ -18,24 +18,28 @@ import {
 import './Information.css';
 import {Circle} from '@mui/icons-material';
 
-function Legend(entities) {
-    return entities?.map((entity, index) => (
+function Legend(users) {
+    const entities = [];
+    for (const key in users) {
+        entities.push(users[key])
+    }
+    return entities?.map((user, index) => (
         <div className="dot" key={index}>
-            <Circle sx={{color: `rgba(${entity.color.r}, ${entity.color.g}, ${entity.color.b}, ${entity.color.a})`}} />
+            <Circle sx={{color: `rgba(${user.color.r}, ${user.color.g}, ${user.color.b}, ${user.color.a})`}} />
             &nbsp;
             <Typography variant="body2">
-                {entity.full_name}
+                {user.full_name}
             </Typography>
         </div>
     ));
 }
 
-function Properties(date, source, properties, entities) {
+function Properties(date, source, graph_properties, users) {
     const date_options = { year: 'numeric', month: 'long', day: 'numeric' };
     let full_names = {};
-    entities?.forEach((entity) => {
-        full_names[entity.username] = entity.full_name;
-    });
+    for (const key in users) {
+        full_names[key] = users[key].full_name;
+    }
     return (
         <List dense>
             <ListItem>
@@ -59,49 +63,49 @@ function Properties(date, source, properties, entities) {
             <ListItem>
                 <ListItemText
                     disableTypography
-                    primary={<Typography variant="body2">Number of {source?.label_of_documents}</Typography>}
-                    secondary={<Typography variant="body2">{source?.number_of_documents}</Typography>}
+                    primary={<Typography variant="body2">Number of tweets</Typography>}
+                    secondary={<Typography variant="body2">{source?.number_of_tweets}</Typography>}
                 />
             </ListItem>
             <ListItem>
                 <ListItemText
                     disableTypography
                     primary={<Typography variant="body2">Number of Users</Typography>}
-                    secondary={<Typography variant="body2">{properties?.nodes}</Typography>}
+                    secondary={<Typography variant="body2">{graph_properties?.nodes}</Typography>}
                 />
             </ListItem>
             <ListItem>
                 <ListItemText
                     disableTypography
                     primary={<Typography variant="body2">Number of Interactions</Typography>}
-                    secondary={<Typography variant="body2">{properties?.edges}</Typography>}
+                    secondary={<Typography variant="body2">{graph_properties?.edges}</Typography>}
                 />
             </ListItem>
-            <ListItem>
-                <ListItemText
-                    disableTypography
-                    primary={<Typography variant="body2">Polarization</Typography>}
-                    secondary={
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Entity A</TableCell>
-                                    <TableCell>Entity B</TableCell>
-                                    <TableCell>Index</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {RenderTableBodyRows(properties?.polarization_index, full_names)}
-                            </TableBody>
-                        </Table>
-                    }
-                />
-            </ListItem>
+            {/*<ListItem>*/}
+            {/*    <ListItemText*/}
+            {/*        disableTypography*/}
+            {/*        primary={<Typography variant="body2">Polarization</Typography>}*/}
+            {/*        secondary={*/}
+            {/*            <Table>*/}
+            {/*                <TableHead>*/}
+            {/*                    <TableRow>*/}
+            {/*                        <TableCell>Entity A</TableCell>*/}
+            {/*                        <TableCell>Entity B</TableCell>*/}
+            {/*                        <TableCell>Index</TableCell>*/}
+            {/*                    </TableRow>*/}
+            {/*                </TableHead>*/}
+            {/*                <TableBody>*/}
+            {/*                    {RenderTableBodyRows(graph_properties?.polarization_index, full_names)}*/}
+            {/*                </TableBody>*/}
+            {/*            </Table>*/}
+            {/*        }*/}
+            {/*    />*/}
+            {/*</ListItem>*/}
             <ListItem>
                 <ListItemText
                     disableTypography
                     primary={<Typography variant="body2">Follows</Typography>}
-                    secondary={Legend(entities)}
+                    secondary={Legend(users)}
                 />
             </ListItem>
         </List>
@@ -143,7 +147,7 @@ function Information(props) {
                 <Typography variant="body2">
 
                 </Typography>
-                {Properties(metadata.date, metadata.source, metadata.graph_properties, metadata.entities)}
+                {Properties(metadata.date, metadata.source, metadata.graph_properties, metadata.users)}
             </DialogContent>
             <DialogActions>
                 <Button
