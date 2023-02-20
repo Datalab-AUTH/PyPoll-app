@@ -1,6 +1,7 @@
 version: "3.8"
 services:
     mongo:
+        container_name: "pypoll.mongo"
         image: mongo:6.0.4
         restart: always
         environment:
@@ -9,11 +10,13 @@ services:
         volumes:
             - "db:/data/db"
     api:
+        container_name: "pypoll.api"
         build: ./api
         restart: always
         ports:
             - 8000:8000
     spa:
+        container_name: "pypoll.spa"
         build: ./spa
         restart: always
         ports:
