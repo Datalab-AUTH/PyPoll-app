@@ -12,7 +12,7 @@ import { InfoOutlined, SettingsBackupRestore, ZoomIn, ZoomOut } from '@mui/icons
 
 import Information from './Information';
 
-const URL = 'http://localhost:8000/graph/get'
+const URL = process.env.APP_HOST;
 
 function Embed() {
     const { id } = useParams();
@@ -22,7 +22,7 @@ function Embed() {
     const [openInformation, setOpenInformation] = useState(false);
 
     const setSigma = async (graph_id) => {
-        const { data } = await axios.get(`${URL}/${graph_id}`);
+        const { data } = await axios.get(`${URL}/graph/get/${graph_id}`);
         setMetadata(data.metadata);
         return new Sigma(parse(Graph, data.data), container.current, {
             minCameraRatio: 0.1,
