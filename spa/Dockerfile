@@ -10,6 +10,6 @@ RUN npm run build
 
 FROM nginx:stable
 
-COPY --from=builder /twitter-tapping-frontend /usr/share/nginx/html
+COPY --from=builder /pypoll/spa/build /usr/share/nginx/html
 
 EXPOSE 80
