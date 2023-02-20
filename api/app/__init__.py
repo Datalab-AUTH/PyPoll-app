@@ -1,8 +1,10 @@
 from dotenv import load_dotenv
 import os
 
-
-load_dotenv()
+try:
+    load_dotenv()
+except:
+    pass
 mongodb_host = os.getenv("MONGODB_HOST")
 mongodb_port = int(os.getenv("MONGODB_PORT"))
 mongodb_username = os.getenv("MONGODB_USERNAME")
