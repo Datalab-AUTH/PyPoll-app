@@ -26,7 +26,7 @@ pipeline {
     // the credentials to the above registry as stored in Jenkins
     // set to 'dockerhub' for DockerHub 
     // or 'datalab-registry' for our private registry
-    registry_credentials = 'datalab-registry'
+    registry_credentials = 'dockerhub'
   }
 
   // you probably don't need to edit anything below this line
