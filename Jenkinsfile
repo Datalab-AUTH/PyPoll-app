@@ -41,7 +41,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          image_api = docker.build("${dockertag}-api:", "./api")
+          image_api = docker.build("${dockertag}-api", "./api")
           image_spa = docker.build("${dockertag}-spa", "./spa")
         }
       }
