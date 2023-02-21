@@ -12,7 +12,7 @@ import { InfoOutlined, SettingsBackupRestore, ZoomIn, ZoomOut } from '@mui/icons
 
 import Information from './Information';
 
-const URL = process.env.APP_HOST;
+const URL = process.env.API_HOST;
 
 function Embed() {
     const { id } = useParams();
