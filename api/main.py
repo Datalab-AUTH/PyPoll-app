@@ -26,7 +26,7 @@ app.include_router(router)
 
 @app.on_event("startup")
 async def startup():
-    mongo.connect(mongodb_host, "polarization", mongodb_port, mongodb_username, mongodb_password)
+    mongo.connect(mongodb_host, "pypoll", mongodb_port, mongodb_username, mongodb_password)
 
 
 @app.on_event("shutdown")
