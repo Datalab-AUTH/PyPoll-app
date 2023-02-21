@@ -8,7 +8,7 @@ function SectorA() {
     const [copy, setCopy] = useState(false);
     const docsURL = 'https://readthedocs.org/';
     const installCommand = 'pip install ...';
-    const URL = process.env.APP_HOST;
+    const URL = process.env.REACT_APP_APP_HOST;
     const iframesData = [
         {height: 250, width: 460, title: 'Graph 1', url: `${URL}`},
         {height: 450, width: 460, title: 'Graph 2', url: `${URL}`},

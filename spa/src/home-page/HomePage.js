@@ -5,7 +5,7 @@ import MenuBar from './MenuBar';
 import FooterPage from './FooterPage';
 
 function HomePage() {
-    const URL = process.env.APP_HOST;
+    const URL = process.env.REACT_APP_APP_HOST;
     return (
         <div>
             <div>
