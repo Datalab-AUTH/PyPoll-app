@@ -34,8 +34,7 @@ function Legend(users) {
     ));
 }
 
-function Properties(date, source, graph_properties, users) {
-    const date_options = { year: 'numeric', month: 'long', day: 'numeric' };
+function Properties(description, source, graph_properties, users) {
     let full_names = {};
     for (const key in users) {
         full_names[key] = users[key].full_name;
@@ -45,10 +44,10 @@ function Properties(date, source, graph_properties, users) {
             <ListItem>
                 <ListItemText
                     disableTypography
-                    primary={<Typography variant="body2">Period</Typography>}
+                    primary={<Typography variant="body2">Description</Typography>}
                     secondary={
                         <Typography variant="body2">
-                            {(new Date(date?.from)).toLocaleDateString("en-US", date_options)} - {(new Date(date?.until)).toLocaleDateString("en-US", date_options)}
+                            {description}
                         </Typography>
                     }
                 />
@@ -57,14 +56,7 @@ function Properties(date, source, graph_properties, users) {
                 <ListItemText
                     disableTypography
                     primary={<Typography variant="body2">Source</Typography>}
-                    secondary={<Typography variant="body2">{source?.name}</Typography>}
-                />
-            </ListItem>
-            <ListItem>
-                <ListItemText
-                    disableTypography
-                    primary={<Typography variant="body2">Number of tweets</Typography>}
-                    secondary={<Typography variant="body2">{source?.number_of_tweets}</Typography>}
+                    secondary={<Typography variant="body2">{source}</Typography>}
                 />
             </ListItem>
             <ListItem>
@@ -104,7 +96,7 @@ function Properties(date, source, graph_properties, users) {
             <ListItem>
                 <ListItemText
                     disableTypography
-                    primary={<Typography variant="body2">Follows</Typography>}
+                    primary={<Typography variant="body2">Legend</Typography>}
                     secondary={Legend(users)}
                 />
             </ListItem>
@@ -147,7 +139,7 @@ function Information(props) {
                 <Typography variant="body2">
 
                 </Typography>
-                {Properties(metadata.date, metadata.source, metadata.graph_properties, metadata.users)}
+                {Properties(metadata.description, metadata.source, metadata.graph_properties, metadata.users)}
             </DialogContent>
             <DialogActions>
                 <Button

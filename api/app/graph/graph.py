@@ -57,13 +57,10 @@ async def get_graph(graph_id: str, user: UserModel = Depends(get_current_user)):
 
 @router.post("/upload")
 async def upload_graph(file: UploadFile, data: RawUploadModel = Depends(), user: UserModel = Depends(get_current_user)):
-    date = ast.literal_eval(data.date)
-    for key in date:
-        date[key] = datetime.strptime(date[key], "%Y-%m-%d")
     data = UploadModel(**{
         "users": ast.literal_eval(data.options)["users"],
-        "date": date,
-        "source": ast.literal_eval(data.source),
+        "source": data.source,
+        "description": data.description,
         "graph_properties": ast.literal_eval(data.graph_properties)
     })
 
