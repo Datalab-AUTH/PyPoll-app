@@ -8,10 +8,11 @@ function SectorA() {
     const [copy, setCopy] = useState(false);
     const docsURL = 'https://readthedocs.org/';
     const installCommand = 'pip install ...';
+    const URL = process.env.REACT_APP_APP_HOST;
     const iframesData = [
-        {height: 250, width: 460, title: 'Graph 1', url: 'http://localhost:3000/embed/635fa4f32e86064bf9ec4fae'},
-        {height: 450, width: 460, title: 'Graph 2', url: 'http://localhost:3000/embed/635fa4f32e86064bf9ec4fae'},
-        {height: 280, width: 460, title: 'Graph 3', url: 'http://localhost:3000/embed/635fa4f32e86064bf9ec4fae'}
+        {height: 250, width: 460, title: 'Graph 1', url: `${URL}`},
+        {height: 450, width: 460, title: 'Graph 2', url: `${URL}`},
+        {height: 280, width: 460, title: 'Graph 3', url: `${URL}`}
     ];
     return (
         <Box>
