@@ -1,0 +1,17 @@
+pre {
+    line-height: 1.5;
+    margin: 16px auto;
+    padding: 16px;
+    background-color: var(--muidocs-palette-primaryDark-800, #001E3C);
+    color: #f8f8f2;
+    -webkit-print-color-scheme: dark;
+    color-scheme: dark;
+    border-radius: var(--muidocs-shape-borderRadius, 10px);
+    border: 1px solid;
+    border-color: var(--muidocs-palette-primaryDark-700, #132F4C);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.8125rem;
+    max-width: calc(100vw - 32px);
+    max-height: 400px;
+}

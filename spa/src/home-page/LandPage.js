@@ -1,132 +1,54 @@
-import React, {useState} from 'react';
-import {Alert, Box, Button, ButtonBase, Grid, Paper, Snackbar, Stack, Typography} from '@mui/material';
-import {ContentCopy} from '@mui/icons-material';
-import {Masonry} from '@mui/lab';
+import React, { Fragment } from 'react';
+import {
+    Box,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    Container,
+    Stack,
+    Typography
+} from '@mui/material';
 import './LandPage.css';
+import { Link } from 'react-router-dom';
 
 function SectorA() {
-    const [copy, setCopy] = useState(false);
-    const docsURL = 'https://readthedocs.org/';
-    const installCommand = 'pip install ...';
-    const URL = process.env.REACT_APP_APP_HOST;
-    const iframesData = [
-        {height: 250, width: 460, title: 'Graph 1', url: `${URL}`},
-        {height: 450, width: 460, title: 'Graph 2', url: `${URL}`},
-        {height: 280, width: 460, title: 'Graph 3', url: `${URL}`}
-    ];
     return (
-        <Box>
-            <Grid container>
-                <Grid item md={7} lg={6}>
-                    <Typography>
-                        Get the library
-                    </Typography>
-                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                        <Button
-                            variant="contained"
-                            href={docsURL}
-                            target="_blank"
-                            rel="noreferrer"
-                        >Get started</Button>
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                backgroundColor: '#F3F6F9',
-                                borderColor: '#CDD2D7',
-                                color: '#2D3843',
-                                textTransform: 'none'
-                            }}
-                            endIcon={<ContentCopy />}
-                            onClick={(e) => {
-                                setCopy(true);
-                                navigator.clipboard.writeText(e.currentTarget.value);
-                            }}
-                            value={installCommand}
-                        >
-                            {installCommand}
-                        </Button>
-                        <Snackbar
-                            anchorOrigin={{vertical: 'top', horizontal: 'right'}}
-                            open={copy}
-                            autoHideDuration={2000}
-                            onClose={() => setCopy(false)}
-                        >
-                            <Alert severity="success" sx={{width: '100%'}}>
-                                Copied to clipboard!
-                            </Alert>
-                        </Snackbar>
-                    </Stack>
-                </Grid>
-                <Grid item md={5} lg={6}>
-                    <Masonry columns={{xs: 1, xl: 2}} spacing={2}>
-                        {iframesData.map((data, index) => (
-                            <Paper key={index}>
-                                <iframe
-                                    height={data.height}
-                                    width={data.width}
-                                    src={data.url}
-                                    title={data.title}
-                                ></iframe>
-                            </Paper>
-                        ))}
-                    </Masonry>
-                </Grid>
-            </Grid>
-        </Box>
-    );
-}
-
-function SectorB() {
-    const projects = [
-        {
-            name: 'Political Lighthouse',
-            description: 'Explore Polarization on greek political discussions in Twitter.',
-            url: 'https://political-lighthouse.netlify.com/',
-            imageURL: 'political_lighthouse_logo.png'
-        },
-        {
-            name: 'Political Lighthouse',
-            description: 'Explore Polarization on greek political discussions in Twitter.',
-            url: 'https://political-lighthouse.netlify.com/',
-            imageURL: 'political_lighthouse_logo.png'
-        },
-        {
-            name: 'Political Lighthouse',
-            description: 'Explore Polarization on greek political discussions in Twitter.',
-            url: 'https://political-lighthouse.netlify.com/',
-            imageURL: 'political_lighthouse_logo.png'
-        }
-    ];
-    return (
-        <Box width={500} height="auto">
-            <Typography>
-                Tools that created with the library
-            </Typography>
-            <Grid container spacing={2}>
-                {projects.map((data, index) => (
-                    <Grid item key={index}>
-                        <Paper variant="outlined">
-                            <ButtonBase href={data.url} target="_blank" rel="noreferrer">
-                                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                                    <img
-                                        src={`./images/logos/${data.imageURL}`}
-                                        height={130}
-                                        alt={data.name}
-                                    />
-                                    <Box>
-                                        <Typography variant="body1">
-                                            <b>{data.name}</b>
-                                        </Typography>
-                                        <Typography variant="body2">
-                                            {data.description}
-                                        </Typography>
-                                    </Box>
-                                </Stack>
-                            </ButtonBase>
-                        </Paper>
-                    </Grid>
-                ))}
-            </Grid>
+        <Box
+            sx={{
+                bgcolor: 'background.paper',
+                pt: 8,
+                pb: 6,
+            }}
+        >
+            <Container maxWidth="md">
+                <Typography
+                    component="h1"
+                    variant="h2"
+                    align="center"
+                    color="text.primary"
+                    gutterBottom
+                >
+                    PyPoll
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" paragraph>
+                    PyPoll is a Python Twitter mining and polarization Library,
+                    a state-of-the-art Python library that automates Twitter graph mining, measures polarization,
+                    and visualizes graphs. PyPoll provides simple high-level functionalities to users that do not
+                    have great programming skills or are new to polarization and graph mining or are new to
+                    Python or experts. It is open-source and guidelines and examples for using it can be found
+                    on GitHub.
+                </Typography>
+                <Stack
+                    sx={{ pt: 4 }}
+                    direction="row"
+                    spacing={2}
+                    justifyContent="center"
+                >
+                    <Button variant="contained" href="https://github.com/dpgiakatos/PyPoll">Go to PyPoll</Button>
+                    <Button variant="outlined" component={Link} to="/graph-sharing-app">Share a graph</Button>
+                </Stack>
+            </Container>
         </Box>
     );
 }
@@ -135,7 +57,6 @@ function LandPage() {
     return (
         <Box>
             <SectorA />
-            <SectorB />
         </Box>
     );
 }

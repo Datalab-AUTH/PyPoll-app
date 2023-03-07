@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import './MenuBar.css'
 
 function MenuBar() {
-    const insidePages = [{name: 'About us', url: '/about'}];
+    const insidePages = [{name: 'Graph Sharing App', url: '/graph-sharing-app'}];
     const docsURL = 'https://readthedocs.org/';
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -17,7 +17,7 @@ function MenuBar() {
         <AppBar position="sticky">
             <Container maxWidth="ml">
                 <Toolbar disableGutters>
-                    <Adb sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} />
+                    {/*<Adb sx={{display: {xs: 'none', md: 'flex'}, mr: 1}} />*/}
                     <Typography
                         sx={{
                             display: {xs: 'none', md: 'flex'},
@@ -26,7 +26,7 @@ function MenuBar() {
                         }}
                     >
                         <Link to="/" className="link">
-                            Lighthouse
+                            PyPoll
                         </Link>
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
@@ -55,13 +55,13 @@ function MenuBar() {
                             onClose={handleCloseNavMenu}
                             sx={{display: {xs: 'block', md: 'none'}}}
                         >
-                            <MenuItem onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <a href={docsURL} target="_blank" rel="noreferrer" className="link">
-                                        Docs
-                                    </a>
-                                </Typography>
-                            </MenuItem>
+                            {/*<MenuItem onClick={handleCloseNavMenu}>*/}
+                            {/*    <Typography textAlign="center">*/}
+                            {/*        <a href={docsURL} target="_blank" rel="noreferrer" className="link">*/}
+                            {/*            Docs*/}
+                            {/*        </a>*/}
+                            {/*    </Typography>*/}
+                            {/*</MenuItem>*/}
                             {insidePages.map((page, index) => (
                                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">
@@ -73,22 +73,22 @@ function MenuBar() {
                             ))}
                         </Menu>
                     </Box>
-                    <Adb sx={{display: {xs: 'flex', md: 'none'}, mr: 1}} />
+                    {/*<Adb sx={{display: {xs: 'flex', md: 'none'}, mr: 1}} />*/}
                     <Typography sx={{display: {xs: 'flex', md: 'none'}, flexGrow: 1}}>
                         <Link to="/" className="link">
-                            Lighthouse
+                            PyPoll
                         </Link>
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                         <MenuList>
                             <Stack direction="row">
-                                <MenuItem>
-                                    <Typography>
-                                        <a href={docsURL} target="_blank" rel="noreferrer" className="link">
-                                            Docs
-                                        </a>
-                                    </Typography>
-                                </MenuItem>
+                                {/*<MenuItem>*/}
+                                {/*    <Typography>*/}
+                                {/*        <a href={docsURL} target="_blank" rel="noreferrer" className="link">*/}
+                                {/*            Docs*/}
+                                {/*        </a>*/}
+                                {/*    </Typography>*/}
+                                {/*</MenuItem>*/}
                                 {insidePages.map((page, index) => (
                                     <MenuItem key={index}>
                                         <Typography>
@@ -101,17 +101,17 @@ function MenuBar() {
                             </Stack>
                         </MenuList>
                     </Box>
-                    <Box sx={{flexGrow: 0}}>
-                        <IconButton
-                            onClick={() => {}}
-                            size="large"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            color="inherit"
-                        >
-                            <TranslateOutlined />
-                        </IconButton>
-                    </Box>
+                    {/*<Box sx={{flexGrow: 0}}>*/}
+                    {/*    <IconButton*/}
+                    {/*        onClick={() => {}}*/}
+                    {/*        size="large"*/}
+                    {/*        aria-controls="menu-appbar"*/}
+                    {/*        aria-haspopup="true"*/}
+                    {/*        color="inherit"*/}
+                    {/*    >*/}
+                    {/*        <TranslateOutlined />*/}
+                    {/*    </IconButton>*/}
+                    {/*</Box>*/}
                 </Toolbar>
             </Container>
         </AppBar>

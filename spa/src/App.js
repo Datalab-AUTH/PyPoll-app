@@ -6,6 +6,7 @@ import HomePage from './home-page/HomePage';
 import Embed from './embed/Embed';
 import AboutUs from './home-page/AboutUs';
 import LandPage from './home-page/LandPage';
+import GraphSharingAppPage from './home-page/GraphSharingAppPage';
 
 function App() {
     return (
@@ -13,8 +14,9 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<HomePage />}>
-                        {/*<Route index element={<LandPage />} />*/}
-                        {/*<Route path="/about" element={<AboutUs />} />*/}
+                        <Route index element={<LandPage />} />
+                        <Route path="/graph-sharing-app" element={<GraphSharingAppPage />} />
+                        <Route path="/about" element={<AboutUs />} />
                     </Route>
                     <Route path="/embed/:id" element={<Embed />} />
                 </Routes>
